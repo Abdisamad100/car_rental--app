@@ -1,0 +1,46 @@
+<!-- custom_admin/car_log_history.html -->
+{% extends 'base.html' %}
+
+{% block title %}Car Rental Logs{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Car Log History</h1>
+
+    <a href="{% url 'car_log_create' %}" class="btn btn-primary mb-3">Add New Car Log</a>
+    
+    {% if car_rentals %}
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <th style="padding: 10px; border: 1px solid #ddd;">Date</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Car Registration</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Car model</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Journey</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Milege</th>
+            <th style="padding: 10px; border: 1px solid #ddd;">Fuel</th> 
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in car_rentals %}
+            <tr>
+                <td>{{ car.car_date }}</td>
+                <td>{{ car.car_model}}</td>
+                <td>{{ car.car_registration}}</td>
+                <td>{{ car.car_journey }}</td>
+                <td>{{ car.car_milege }}</td>
+                <td>{{ car.fuel_used }}</td>
+                <td>
+                    <a href="{% url 'car_log_edit' car.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'car_log_delete' car.pk %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this car log?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No car logs found.</p>
+    {% endif %}
+</div>
+{% endblock %}

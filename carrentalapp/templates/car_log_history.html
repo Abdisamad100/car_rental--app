@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Your Car Log History</h2>
+  {% if grouped_logs %}
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <thead>
+        <tr style="background-color: #f4f4f4; text-align: left; font-weight: bold;">
+          <th style="padding: 10px; border: 1px solid #ddd;">Date</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Car Registration</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Departed</th>
+          <th style="padding: 10px; border: 1px solid #ddd;">Arrived</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for date, cars in grouped_logs.items %}
+          <tr>
+            <td colspan="4" style="background-color: #f4f4f4; text-align: center; padding: 10px; font-weight: bold;">
+              {{ date }}
+            </td>
+          </tr>
+          {% for car in cars %}
+            <tr>
+              <td></td>  <!-- Empty cell to align with the columns -->
+              <td style="padding: 10px; border: 1px solid #ddd;">{{ car.car_registration }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">{{ car.car_milege }}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">{{ car.carjourney }}</td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No car logs found.</p>
+  {% endif %}
+{% endblock %}
+

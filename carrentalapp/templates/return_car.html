@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>log your return journey here</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- <label for="rental_id">Select Rental:</label> -->
+    <select name="rental_id" required>
+        {% for rental in rentals %}
+            <option value="{{ rental.id }}">{{ rental.car_model }}</option>
+        {% endfor %}
+    </select>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

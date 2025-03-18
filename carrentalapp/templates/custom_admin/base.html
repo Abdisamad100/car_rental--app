@@ -1,0 +1,27 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Car Rental Admin{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIq0tGz+PjOw7zLz5ihX4FUmF+4Ck/E6S2aDfqXMF95K9p4W3xL" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'car_log_history' %}">Car Rental Admin</a>
+        </nav>
+
+        <div class="main-content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-CzSM2B81OjfKQsHVpSlnfNvwQXt7/ZH6PrUsXp1JMXW1V9h/e44evjlRzwTu6Yfn" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-JGVz4l1DqnkVjS7W+cRcx1mE84h2CGCk5drV4ChDmiE/Nfd2Hp1Vc8Fb5e12/5Zr" crossorigin="anonymous"></script>
+</body>
+</html>

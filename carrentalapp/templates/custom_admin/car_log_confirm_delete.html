@@ -1,0 +1,16 @@
+<!-- custom_admin/car_log_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Delete Car Log{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Are you sure you want to delete the log for <strong>{{ car.car_registration }}</strong>?</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'car_log_history' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
